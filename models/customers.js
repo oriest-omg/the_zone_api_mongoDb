@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
     fname : String,
     lname : String,
+    email : String,
     password : String,
     // age: Number,
     // movies : [{

@@ -1,5 +1,5 @@
 const Customer = require("../models/customers");
-const Movie = require("../models/movies")
+// const Movie = require("../models/products")
 module.exports = {
     readAll(req,res){
         Customer.find().then((customers)=>{
@@ -15,9 +15,10 @@ module.exports = {
     create(req,res){
         const fname = req.body.fname;
         const lname = req.body.lname;
+        const email = req.body.email;
         const password = req.body.password;
         const body = req.body;
-        const customer = new Customer({fname,lname,password});
+        const customer = new Customer({fname,lname,email,password});
         customer.save().then(()=>{
             res.send(customer);
         })

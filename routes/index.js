@@ -1,5 +1,5 @@
 CustomerController = require('../controllers/customer-controller');
-MovieController = require('../controllers/movie-controller');
+ProductController = require('../controllers/product-controller');
 
 module.exports = (server)=>{
 
@@ -17,9 +17,9 @@ module.exports = (server)=>{
     server.get('/oldest/customer',CustomerController.oldest)
 
     //MovieS
-    server.get('/movies',MovieController.readAll)
-    server.get('/movie/:id',MovieController.read)
-    server.post('/movie',MovieController.create)
-    server.delete('/movie',MovieController.delete)
+    server.get('/products',ProductController.readAll)
+    server.get('/product/:id',ProductController.read)
+    server.post('/product',ProductController.create)
+    server.delete('/product',ProductController.delete)
 
 }
