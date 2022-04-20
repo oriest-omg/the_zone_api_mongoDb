@@ -9,6 +9,7 @@ module.exports = (server)=>{
     // server.get('/user/:id',(req,res)=>{
     // })
 
+    
     //User
     server.get('/customers',CustomerController.readAll)
     server.get('/customer/:id',CustomerController.read)
@@ -16,10 +17,18 @@ module.exports = (server)=>{
     server.delete('/customer',CustomerController.delete)
     server.get('/oldest/customer',CustomerController.oldest)
 
-    //MovieS
+
+    //product
     server.get('/products',ProductController.readAll)
     server.get('/product/:id',ProductController.read)
     server.post('/product',ProductController.create)
     server.delete('/product',ProductController.delete)
+
+
+    //order
+    server.get('/orders',OrderController.readAll)
+    server.get('/order/:id',OrderController.read)
+    server.post('/order',OrderController.create)
+    server.delete('/order',OrderController.delete)
 
 }

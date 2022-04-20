@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PriceSchema = require('./price').schema;
-const DimensionsSchema = require('./dimensions').schema;
-const ImagesSchema = require('./images').schema;
-
 
 
 const ProductTypeSchema = new Schema({

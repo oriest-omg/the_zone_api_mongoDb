@@ -13,12 +13,14 @@ module.exports = {
         })
     },
     create(req,res){
+        // const _id = req.body.email;
         const fname = req.body.fname;
         const lname = req.body.lname;
         const email = req.body.email;
         const password = req.body.password;
         const body = req.body;
-        const customer = new Customer({fname,lname,email,password});
+        const customer = new Customer({fname,lname,password});
+        customer._id = email;
         customer.save().then(()=>{
             res.send(customer);
         })

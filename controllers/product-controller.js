@@ -1,4 +1,3 @@
-const Price = require("../models/price");
 const Product = require("../models/products");
 const ProductType = require("../models/product_types");
 module.exports = {
