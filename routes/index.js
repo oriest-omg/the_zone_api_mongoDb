@@ -1,6 +1,7 @@
 CustomerController = require('../controllers/customer-controller');
 ProductController = require('../controllers/product-controller');
-
+OrderController = require('../controllers/order-controller');
+ImageController = require('../controllers/image-controller')
 module.exports = (server)=>{
 
     // server.get('/users',(req,res)=>{
@@ -9,7 +10,7 @@ module.exports = (server)=>{
     // server.get('/user/:id',(req,res)=>{
     // })
 
-    
+
     //User
     server.get('/customers',CustomerController.readAll)
     server.get('/customer/:id',CustomerController.read)
@@ -30,5 +31,11 @@ module.exports = (server)=>{
     server.get('/order/:id',OrderController.read)
     server.post('/order',OrderController.create)
     server.delete('/order',OrderController.delete)
+
+    //image
+    server.get('/images',ImageController.readAll)
+    server.get('/image/:id',ImageController.read)
+    server.post('/image',ImageController.create)
+    server.delete('/image',ImageController.delete)
 
 }

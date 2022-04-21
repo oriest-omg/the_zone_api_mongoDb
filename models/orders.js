@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 
 
 const OrderSchema = new Schema({
-    _id : String,
     customerId :{
         type : Schema.Types.ObjectId,
         ref:'customer'

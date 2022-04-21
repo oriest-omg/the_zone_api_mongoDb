@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ImagesSchema = new Schema({
     source : {type : String},
-    labem : {type : String}
+    label : {type : String}
 })
 
 const Images = mongoose.model('images',ImagesSchema);
