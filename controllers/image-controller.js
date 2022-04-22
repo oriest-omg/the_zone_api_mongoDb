@@ -4,7 +4,7 @@ const multer = require('multer') // import library
 const moment = require('moment')
 const q = require('q')
 const fs = require('fs')
-
+var path = require("path");
 
 module.exports = {
     readAll(req,res){
@@ -17,6 +17,13 @@ module.exports = {
         Image.findById(id).then((image)=>{
             res.send(image);
         })
+    },
+    getFile (req, res) {
+        const {id} = req.params;
+        Image.findById(id).then((image)=>{
+            res.sendFile(path.resolve(image.source));
+        })
+
     },
     create(req,res){
         fileUpload(req, res)
@@ -51,7 +58,7 @@ module.exports = {
 //electron
 // const dir = './dist/client/assets'
 //web
-const dir = './images'
+const dir = './files'
 
 
 /** Store file on local folder */
@@ -60,7 +67,7 @@ destination: function (req, file, cb) {
     //electron
     // cb(null, './dist/client/assets')
     //web
-    cb(null, './images')
+    cb(null, './files')
 
 },
 filename: function (req, file, cb) {

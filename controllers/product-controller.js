@@ -2,7 +2,11 @@ const Product = require("../models/products");
 const ProductType = require("../models/product_types");
 module.exports = {
     readAll(req,res){
-        Product.find().then((products)=>{
+        Product.find().populate({
+            path: 'product_types',
+            model : 'productType',
+            populate: { path: 'images'}
+        }).then((products)=>{
             res.send(products)
         })
     },

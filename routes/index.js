@@ -23,7 +23,7 @@ module.exports = (server)=>{
     server.get('/products',ProductController.readAll)
     server.get('/product/:id',ProductController.read)
     server.post('/product',ProductController.create)
-    server.delete('/product',ProductController.delete)
+    server.delete('/product/:id',ProductController.delete)
 
 
     //order
@@ -35,6 +35,7 @@ module.exports = (server)=>{
     //image
     server.get('/images',ImageController.readAll)
     server.get('/image/:id',ImageController.read)
+    server.get('/image/src/:id',ImageController.getFile)
     server.post('/image',ImageController.create)
     server.delete('/image',ImageController.delete)
 
