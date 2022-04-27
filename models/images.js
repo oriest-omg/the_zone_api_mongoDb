@@ -6,6 +6,7 @@ const ImagesSchema = new Schema({
     label : {type : String}
 })
 
+
 const Images = mongoose.model('images',ImagesSchema);
 
 module.exports = Images;

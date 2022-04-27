@@ -1,13 +1,15 @@
 const mongoose = require('mongoose');
+const fs = require("fs");
 const Schema = mongoose.Schema;
+var path = require('path');
 
-
+const Image = require('./images');
 
 const ProductTypeSchema = new Schema({
     available:{type: Boolean},
-    Stock : {type : Number},
+    stock : {type : Number},
     price : {
-        original : {type : mongoose.Types.Decimal128},
+        original : {type : String},
         discount : {type : Number},
         bulk_discount : { type : Number},
         discount_quantity : { type : Number},
@@ -25,6 +27,31 @@ const ProductTypeSchema = new Schema({
         ref:'images'}],
     created : {type : Date},
     updated : {type :Date}
+})
+
+ProductTypeSchema.pre('findOneAndDelete', async function(next){
+    const productType = await this.model.findOne(this.getQuery());
+    console.log('pre remove image');
+    console.log(productType);
+    if(productType.images && productType.images.length)
+    {
+        for(const image of productType.images){
+            Image.findOneAndDelete({_id : image._id}).then((image)=>{
+                console.log('after remove image');
+                console.log(image);
+                const imagePath = path.resolve(image.source);
+                console.log(imagePath);
+                fs.unlink(imagePath, function (err) {
+                if (err) {
+                    console.error(err);
+                } else {
+                    console.log("File removed:", imagePath);
+                }
+                });
+                next();
+            })
+        }
+    }
 })
 
 const ProductType = mongoose.model('productType',ProductTypeSchema);

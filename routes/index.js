@@ -23,7 +23,11 @@ module.exports = (server)=>{
     server.get('/products',ProductController.readAll)
     server.get('/product/:id',ProductController.read)
     server.post('/product',ProductController.create)
-    server.delete('/product/:id',ProductController.delete)
+    server.delete('/product',ProductController.delete)
+    server.put('/product',ProductController.put)
+
+    //productType
+    server.delete('/productType',ProductController.deleteProductType)
 
 
     //order
